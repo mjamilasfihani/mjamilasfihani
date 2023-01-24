@@ -14,7 +14,7 @@ I work as website developer with Laravel's skill and PHPUnit for the testing. I'
 5. 🎉 Merged PR [#4](https://github.com/mjamilasfihani/myth-auth/pull/4) in [mjamilasfihani/myth-auth](https://github.com/mjamilasfihani/myth-auth)
 <!--END_SECTION:activity-->
 
-#### Find me elsewhere 🌐
+### Find me elsewhere 🌐
 
 [![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/mjamilasfihani)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/mjamilasfihani)
