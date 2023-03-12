@@ -29,11 +29,11 @@ I work as website developer (backend) with a PHP framework's skilled, PHPUnit fo
 ### Recent open source activity :zap: 
 
 <!--START_SECTION:activity-->
-1. 💪 Opened PR [#2](https://github.com/pararang/be-05-se2-algo/pull/2) in [pararang/be-05-se2-algo](https://github.com/pararang/be-05-se2-algo)
-2. 🎉 Merged PR [#14](https://github.com/mjamilasfihani/conquer-container/pull/14) in [mjamilasfihani/conquer-container](https://github.com/mjamilasfihani/conquer-container)
-3. 💪 Opened PR [#515](https://github.com/km-neuron/algorithm-assignment/pull/515) in [km-neuron/algorithm-assignment](https://github.com/km-neuron/algorithm-assignment)
-4. 🎉 Merged PR [#1](https://github.com/mjamilasfihani/ruang-belajar/pull/1) in [mjamilasfihani/ruang-belajar](https://github.com/mjamilasfihani/ruang-belajar)
-5. 💪 Opened PR [#1](https://github.com/mjamilasfihani/ruang-belajar/pull/1) in [mjamilasfihani/ruang-belajar](https://github.com/mjamilasfihani/ruang-belajar)
+1. 💪 Opened PR [#14](https://github.com/pararang/be-05-se2-algo/pull/14) in [pararang/be-05-se2-algo](https://github.com/pararang/be-05-se2-algo)
+2. 💪 Opened PR [#2](https://github.com/pararang/be-05-se2-algo/pull/2) in [pararang/be-05-se2-algo](https://github.com/pararang/be-05-se2-algo)
+3. 🎉 Merged PR [#14](https://github.com/mjamilasfihani/conquer-container/pull/14) in [mjamilasfihani/conquer-container](https://github.com/mjamilasfihani/conquer-container)
+4. 💪 Opened PR [#515](https://github.com/km-neuron/algorithm-assignment/pull/515) in [km-neuron/algorithm-assignment](https://github.com/km-neuron/algorithm-assignment)
+5. 🎉 Merged PR [#1](https://github.com/mjamilasfihani/ruang-belajar/pull/1) in [mjamilasfihani/ruang-belajar](https://github.com/mjamilasfihani/ruang-belajar)
 <!--END_SECTION:activity-->
 
 ### Find me elsewhere 🌐
