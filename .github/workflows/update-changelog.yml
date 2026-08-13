@@ -1,10 +1,19 @@
-name: Update changelog
+name: update changelog
 
 on:
   workflow_call:
     inputs:
-      target:
-        required: true
+      branch:
+        description: "Target branch"
+        default: ${{ github.event.release.target_commitish }}
+        type: string
+      version:
+        description: "Released version"
+        default: ${{ github.event.release.tag_name }}
+        type: string
+      notes:
+        description: "Release notes"
+        default: ${{ github.event.release.body }}
         type: string
 
 permissions:
@@ -12,24 +21,34 @@ permissions:
 
 jobs:
   update-changelog:
-    name: Update changelog
+    name: Update Changelog
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: ${{ inputs.target }}
+          fetch-depth: 0
+          ref: ${{ inputs.branch }}
+
+      - name: Extract release date from git tag
+        id: release_date
+        run: |
+          TIMESTAMP_OF_RELEASE_COMMIT=$(git log -1 --date=unix --format=%ad '${{ inputs.version }}');
+          FORMATED_DATE=$(date -u -d @$TIMESTAMP_OF_RELEASE_COMMIT +%Y-%m-%d)
+          echo "date=$(echo $FORMATED_DATE)" >> $GITHUB_OUTPUT;
 
       - name: Update changelog
         uses: stefanzweifel/changelog-updater-action@a938690fad7edf25368f37e43a1ed1b34303eb36 # v1.12.0
         with:
-          latest-version: ${{ github.event.release.name }}
-          release-notes: ${{ github.event.release.body }}
+          release-date: ${{ steps.release_date.outputs.date }}
+          release-notes: ${{ inputs.notes }}
+          latest-version: ${{ inputs.version }}
+          parse-github-usernames: true
 
       - name: Commit updated changelog
         uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7.2.0
         with:
-          branch: ${{ inputs.target }}
-          commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
+          branch: ${{ inputs.branch }}
+          commit_message: "Update CHANGELOG.md"
           file_pattern: CHANGELOG.md
