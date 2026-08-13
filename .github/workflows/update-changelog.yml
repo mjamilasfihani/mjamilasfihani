@@ -3,6 +3,9 @@ name: Update changelog
 on:
   workflow_call:
 
+permissions:
+  contents: write
+
 jobs:
   update-changelog:
     name: Update changelog
