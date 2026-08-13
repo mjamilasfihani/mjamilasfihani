@@ -4,7 +4,6 @@ on:
   workflow_call:
     inputs:
       path:
-        description: "Which manifest should be uploaded?"
         type: string
         required: true
 
