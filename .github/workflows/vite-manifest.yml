@@ -1,0 +1,40 @@
+name: Vite manifest
+
+on:
+  workflow_call:
+
+jobs:
+  vite-manifest:
+    name: Vite manifest
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+
+      - name: Get cache directory
+        id: package-cache
+        run: echo "dir=$(bun pm cache)" >> $GITHUB_OUTPUT
+
+      - name: Cache package dependencies
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.package-cache.outputs.dir }}
+          key: ${{ runner.os }}-package-${{ hashFiles('**/package.json') }}
+          restore-keys: ${{ runner.os }}-package-
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build the manifest
+        run: bun run build
+
+      - name: Uploading manifest as artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          path: |
+            bun.lock
+            public/build
