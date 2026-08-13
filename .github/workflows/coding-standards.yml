@@ -26,5 +26,5 @@ jobs:
           coverage: none
           tools: composer:2.10, pint:1.30
 
-      - name: Run style checker
+      - name: Run coding standards
         run: pint --test -v
