@@ -1,0 +1,44 @@
+name: Static Analysis
+
+on:
+  workflow_call:
+    inputs:
+      php:
+        default: "8.3"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  static-analysis:
+    name: Static Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2.37.2
+        with:
+          php-version: ${{ inputs.php }}
+          coverage: none
+          tools: composer:2.10
+
+      - name: Get cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache composer dependencies
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Validate static analysis
+        run: vendor/bin/phpstan analyze
