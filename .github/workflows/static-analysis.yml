@@ -40,5 +40,5 @@ jobs:
       - name: Install dependencies
         run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
 
-      - name: Run static analysis
+      - name: Validate static analysis
         run: vendor/bin/phpstan analyze
