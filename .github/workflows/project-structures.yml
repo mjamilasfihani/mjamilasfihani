@@ -1,4 +1,4 @@
-name: Application Structures
+name: Project Structures
 
 on:
   workflow_call:
@@ -11,8 +11,8 @@ permissions:
   contents: read
 
 jobs:
-  application-structures:
-    name: Application Structures
+  project-structures:
+    name: Project Structures
     runs-on: ubuntu-latest
 
     steps:
@@ -40,5 +40,5 @@ jobs:
       - name: Install dependencies
         run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
 
-      - name: Run application structures
+      - name: Validate project structures
         run: vendor/bin/rector process --dry-run
