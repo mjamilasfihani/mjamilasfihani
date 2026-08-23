@@ -24,7 +24,7 @@ jobs:
         with:
           php-version: ${{ inputs.php }}
           coverage: none
-          tools: composer:2.10, pint:1.30
+          tools: composer:2.10
 
       - name: Get cache directory
         id: composer-cache
