@@ -13,7 +13,7 @@ permissions:
 jobs:
   package-manifest:
     name: Package Manifest
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
 
     steps:
       - name: Checkout code
